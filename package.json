@@ -1,0 +1,15 @@
+{
+  "name": "transparentwindow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "start": "electron ."
+  },
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^26.2.2"
+  }
+}
