@@ -1,27 +1,34 @@
-const{ app, BrowserWindow, ipcMain} = require('electron');
+const { app, BrowserWindow, ipcMain, globalShortcut, webContents} = require('electron');
 const path = require('path');
 
 let win;
 
 const createWin = () => {
 	win = new BrowserWindow({
-		width: 240,
+		width: 320,
 		height: 200,
 		minWidth: 180,
 		minHeight: 180,
 		frame: false,
 		alwaysOnTop: true,
-
+		icon: __dirname + "/assets/icon.ico",
 		transparent: true,
 		webPreferences: {
-			isSecureContext: true,
+			contextIsolation: false,
 			nodeIntegration: true,
-			preload: path.join(__dirname + '/scripts/preload.js')
 		}
 	})
 
+	globalShortcut.register('Alt+F1', () => {
+		win.webContents.send('f1')
+	})
+
+	globalShortcut.register('Alt+F2', () =>{
+		win.webContents.send('f2')		
+	})
+
+	// win.webContents.openDevTools();
 	win.loadFile('./index.html');
-	win.webContents.openDevTools();
 
 	// titleBar кнопки
 	ipcMain.on('min', () => {
@@ -33,4 +40,4 @@ const createWin = () => {
 	})
 }
 
-app.whenReady().then(createWin)
+app.whenReady().then(createWin);

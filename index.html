@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ 	<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -20,13 +20,52 @@
 
 	<main class="hero">
 		<div class="setTimer">
+			<div class="setTimer_item">
+				<input type="number"  min="0" max="59" step="1" value="00" class="inputHour" readonly>
+				<div class="buttons">
+					<button onclick="increase('.inputHour')"><i class="fa-solid fa-plus"></i></button>
+					<button onclick="decrease('.inputHour')"><i class="fa-solid fa-minus"></i></button>
+				</div>
+			</div>
+			
+			<span>:</span>
+			<div class="setTimer_item">
+				<input type="number" min="0" max="59" value="00" class="inputMinute" readonly>
+				<div class="buttons">
+					<button onclick="increase('.inputMinute')"><i class="fa-solid fa-plus"></i></button>
+					<button onclick="decrease('.inputMinute')"><i class="fa-solid fa-minus"></i></button>
+				</div>
+			</div>
 
+			<span>:</span>
+			<div class="setTimer_item">
+				<input type="number" min="0" max="59" value="00" class="inputSeconds" readonly>
+				<div class="buttons">
+					<button onclick="increase('.inputSeconds')">+</button>
+					<button onclick="decrease('.inputSeconds')"><i class="fa-solid fa-minus"></i></button>
+				</div>
+			</div>
 		</div>
-
-		<div class="beginTimer">
-
 		</div>
 	</main>
+
+	<script>
+		function decrease(elem) {
+			let input = document.querySelector(elem);
+			if (input.value > 0) {
+				input.value--;
+				input.value = (input.value < 10) ? `0${input.value}` : input.value;
+			}
+		}
+
+		function increase(elem) {
+			let input = document.querySelector(elem);
+			if (input.value < 59) {
+				input.value++;
+				input.value = (input.value < 10) ? `0${input.value}` : input.value;
+			}
+		}
+	</script>
 
 	<script src="./scripts/script.js"></script>
 </body>

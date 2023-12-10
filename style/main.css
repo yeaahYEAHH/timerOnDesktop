@@ -8,11 +8,14 @@ html,
 body {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .win{
     position: absolute;
     width: 100%;
+    border-radius: 6px;
+    border: 1px solid black;
 }
 
 .win__bar{
@@ -25,7 +28,16 @@ body {
     gap: 3px;
     padding: 3px;
     border-radius: 5px;
-    transition: .6s ease-in-out;
+    border: 2px solid black;
+    transition: .5s ease-out;
+}
+
+.win__bar > *{
+    cursor: pointer;
+}
+
+.win .hover{
+    top: 0px;
 }
 
 .title{
@@ -44,11 +56,88 @@ body {
 
 .win__bar > .win__item:not(:last-child):hover{
     background-color: white;
-    color: black;
-   
+    color: black;   
 }
 
 .win__bar > :last-child:hover{
     background-color: red;
 } 
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+}
+
+button{
+    flex: 0 1 45%;
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 3px;
+    border-radius: 10px;   
+    transition: .2s ease-in-out;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+}
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    height: 100%;
+}
+
+.setTimer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+.setTimer_item > *{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.setTimer > span{
+    font-size: 10vw;
+}
+.setTimer_item > input{
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid black;
+    /* max-width: 25%; */
+    font-size: 11vw;
+    text-align: center;
+    background-color: transparent;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+@media (max-width: 660px) {
+    .setTimer_item>input {
+        font-size: 10vw;
+    }
+}
+
+@media (max-width: 425px) {
+    .setTimer_item>input {
+        font-size: 13vw;
+    }
+}
+
+
 
