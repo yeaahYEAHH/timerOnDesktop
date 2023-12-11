@@ -52,6 +52,6 @@ node2--windowbtn-->node1
 
 Таблица функций и каналов
 | Канал | Функции|
-|----|----|
+|----|:---:|
 | f1 | _debouncedStart_ / _debouncedStop_|
 | f2 | _debouncedReset_ |
